@@ -15,19 +15,15 @@ Cette relation est gérée en utilisant une association Many-to-Many entre
 les entités User et Role.</p>
 <img src="captures/conception.PNG" alt="Conception">
 <h2>Structure du Projet</h2>
-<p>Le projet est organisé en plusieurs packages, chacun ayant un rôle spécifique :
-  - Le package ma.enset.entities contient les définitions des entités User et Role.
-Ces entités sont annotées avec des métadonnées JPA pour les mappages en base de données.
-  - Le package ma.enset.repositories abrite les interfaces UserRepository 
-et RoleRepository, qui héritent de JpaRepository. Ces interfaces sont 
-utilisées pour effectuer des opérations CRUD (Create, Read, Update, Delete) sur les entités User et Role.
-  - Le package ma.enset.service contient l'interface UserService et son implémentation
-UserServiceImpl. UserService définit des méthodes pour la gestion des utilisateurs et des rôles,
-telles que l'ajout d'un nouvel utilisateur, la recherche d'un utilisateur par nom d'utilisateur,
-et bien d'autres. UserServiceImpl fournit l'implémentation concrète de ces méthodes.
-  - Le package ma.enset.web :contient le contrôleur UserController, qui expose une API REST pour 
-récupérer les détails d'un utilisateur en utilisant son nom d'utilisateur. Cette API est accessible
-via une requête HTTP GET sur l'URL "/users/{username}".</p>
+<ul>
+  <li>Le projet est organisé en plusieurs packages, chacun ayant un rôle spécifique :</li>
+  <ul>
+    <li>Le package <code>ma.enset.entities</code> contient les définitions des entités <code>User</code> et <code>Role</code>. Ces entités sont annotées avec des métadonnées JPA pour les mappages en base de données.</li>
+    <li>Le package <code>ma.enset.repositories</code> abrite les interfaces <code>UserRepository</code> et <code>RoleRepository</code>, qui héritent de <code>JpaRepository</code>. Ces interfaces sont utilisées pour effectuer des opérations CRUD (Create, Read, Update, Delete) sur les entités <code>User</code> et <code>Role</code>.</li>
+    <li>Le package <code>ma.enset.service</code> contient l'interface <code>UserService</code> et son implémentation <code>UserServiceImpl</code>. <code>UserService</code> définit des méthodes pour la gestion des utilisateurs et des rôles, telles que l'ajout d'un nouvel utilisateur, la recherche d'un utilisateur par nom d'utilisateur, et bien d'autres. <code>UserServiceImpl</code> fournit l'implémentation concrète de ces méthodes.</li>
+    <li>Le package <code>ma.enset.web</code> contient le contrôleur <code>UserController</code>, qui expose une API REST pour récupérer les détails d'un utilisateur en utilisant son nom d'utilisateur. Cette API est accessible via une requête HTTP GET sur l'URL <code>"/users/{username}"</code>.</li>
+  </ul>
+</ul>
 
 <h2>Utilisation des Annotations</h2>
 <p>Le projet fait un large usage d'annotations pour configurer les entités, les repositories, et les contrôleurs REST. Voici quelques-unes des annotations clés utilisées dans le projet :
