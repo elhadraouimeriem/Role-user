@@ -24,13 +24,49 @@ les entités User et Role.</p>
   </ul>
 
 <h2>Utilisation des Annotations</h2>
-<p>Le projet fait un large usage d'annotations pour configurer les entités, les repositories, et les contrôleurs REST. Voici quelques-unes des annotations clés utilisées dans le projet :
-  - @Entity : Cette annotation marque les classes User et Role comme des entités persistantes, qui sont mappées sur des tables de base de données.
-  - @Id : L'annotation @Id définit un champ comme la clé primaire de l'entité.
-  - @GeneratedValue : Cette annotation définit la stratégie de génération des valeurs de la clé primaire. Ici, GenerationType.IDENTITY indique que la base de données génère automatiquement les valeurs.
-  - @ManyToMany : Cette annotation définit une relation Many-to-Many entre les entités User et Role. Cette relation permet à un utilisateur d'avoir plusieurs rôles et vice versa.
-  - @RestController : Cette annotation marque la classe UserController comme un contrôleur REST, permettant d'exposer des points d'API HTTP.</p>
-
+<p style="text-align: justify; text-justify: inter-word;">Les annotations sont largement utilisées dans le projet pour configurer les entités, les repositories, et les contrôleurs REST. Voici un résumé des annotations clés et de leur utilité :</p>
+<ol>
+  <li><strong>Annotations liées aux entités :</strong>
+    <ul>
+      <li><strong>@Entity :</strong> Marque les classes comme des entités persistantes, mappées sur des tables de base de données.</li>
+      <li><strong>@Id :</strong> Définit un champ comme la clé primaire de l'entité.</li>
+      <li><strong>@GeneratedValue(strategy = GenerationType.IDENTITY) :</strong> Définit la stratégie de génération des valeurs de la clé primaire, indiquant que la base de données génère automatiquement les valeurs.</li>
+      <li><strong>@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) :</strong> Contrôle la sérialisation JSON des entités en excluant certains champs de la réponse JSON.</li>
+      <li><strong>@ManyToMany(fetch = FetchType.EAGER) :</strong> Indique une relation many-to-many entre les entités avec un chargement EAGER.</li>
+      <li><strong>@ToString.Exclude :</strong> Exclut le champ de la génération automatique de la méthode <code>toString()</code> par Lombok.</li>
+      <li><strong>@Column(name="Description") :</strong> Définit le nom de la colonne dans la table de base de données.</li>
+      <li><strong>@Table(name="USERS") :</strong> Définit le nom de la table dans la base de données pour l'entité.</li>
+      <li><strong>@Enumerated(EnumType.STRING) :</strong> Utilisée pour stocker les valeurs d'une énumération sous forme de chaînes de caractères dans la base de données, ce qui facilite la lisibilité des données.</li>
+      <li><strong>@AllArgsConstructor :</strong> Cette annotation est généralement associée au framework Lombok. Elle génère automatiquement un constructeur qui prend tous les champs de la classe en tant que paramètres, simplifiant la création d'instances de la classe.</li>
+      <li><strong>@NoArgsConstructor :</strong> Cette annotation, également associée à Lombok, génère un constructeur sans aucun paramètre, permettant de créer des instances de la classe sans avoir à spécifier de valeurs pour les champs.</li>
+      <li><strong>@Data :</strong> Cette annotation de Lombok génère automatiquement des méthodes getter, setter, equals(), hashCode(), et toString() pour tous les champs de la classe, réduisant le code boilerplate.</li>
+    </ul>
+  </li>
+  <li><strong>Annotations liées aux repositories :</strong>
+    <ul>
+      <li><strong>@Repository :</strong> Indique que la classe est un composant de persistance Spring, activant la création automatique d'une implémentation de l'interface par Spring Data JPA.</li>
+      <li><strong>JpaRepository :</strong> L'interface fournit des méthodes de base pour effectuer des opérations de CRUD sur l'entité correspondante.</li>
+    </ul>
+  </li>
+  <li><strong>Annotations liées aux services :</strong>
+    <ul>
+      <li><strong>@Service :</strong> Cette annotation est utilisée pour indiquer que la classe est un composant de service Spring, permettant à Spring de détecter automatiquement cette classe lors de la configuration de l'application.</li>
+      <li><strong>@Transactional :</strong> Cette annotation est utilisée pour indiquer que les méthodes de cette classe sont transactionnelles, gérant les transactions de base de données.</li>
+    </ul>
+  </li>
+  <li><strong>Annotations liées aux contrôleurs REST :</strong>
+    <ul>
+      <li><strong>@RestController :</strong> Marque les classes comme des contrôleurs REST, permettant d'exposer des points d'API HTTP.</li>
+      <li><strong>@GetMapping :</strong> Définit les méthodes comme des gestionnaires de requêtes HTTP GET pour des chemins d'URL spécifiques.</li>
+      <li><strong>@Autowired :</strong> Utilisée pour injecter automatiquement les dépendances, permettant d'accéder aux ressources nécessaires, comme les repositories, dans les contrôleurs.</li>
+    </ul>
+  </li>
+  <li><strong>Annotation @Bean pour la Configuration des Beans :</strong>
+    <ul>
+      <li><strong>@Bean :</strong> Utilisée pour créer un bean personnalisé de type CommandLineRunner, gérant des dépendances, personnalisant le comportement du démarrage de l'application, centralisant la configuration, et exécutant des tâches spécifiques au lancement de l'application.</li>
+    </ul>
+  </li>
+</ol>
 <h2>Configuration de la Base de Données</h2>
 <p style="text-align: justify; text-justify: inter-word;">Le projet est configuré pour utiliser 
 une base de données pour stocker 
