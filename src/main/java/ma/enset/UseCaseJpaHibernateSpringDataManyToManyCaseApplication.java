@@ -36,21 +36,24 @@ public class UseCaseJpaHibernateSpringDataManyToManyCaseApplication {
                 userService.addNewRole(role1);
             });
 
-            userService.addRoleToUser("user1","STUDENT");
-            userService.addRoleToUser("user1","USER");
+            userService.addRoleToUser("meriem","STUDENT");
+            userService.addRoleToUser("meriem","USER");
             userService.addRoleToUser("admin","USER");
             userService.addRoleToUser("admin","ADMIN");
+           try{
+               User user=userService.autehticate("meriem","123456");
+               System.out.println(user.getUserId());
+               System.out.println(user.getUserName());
+               System.out.println("Roles==>");
+               user.getRoles().forEach(r->{
+                   System.out.println("Roles=>"+r);
+               });
 
-            try{
-                User user=userService.autehticate("user1","123456");
-                System.out.println(user.getUserId());
-                System.out.println(user.getUserName());
-                System.out.println("Roles => ");
-                user.getRoles().forEach(r-> System.out.println("Role=> " +r.toString()));
-            }
-            catch (Exception exception){
-                exception.printStackTrace();
-            }
+           }catch (Exception e){
+               e.printStackTrace();
+           }
+
+
         };
     }
 

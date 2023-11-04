@@ -76,24 +76,50 @@ où l'on peut spécifier le type de base de données (H2 ou MySQL), l'URL de la 
 le nom d'utilisateur, et le mot de passe. Dans ce projet,on a utilisé dans un premier temps H2 puis MySQL.</p>
 
 <h2>Gestion des Utilisateurs et des Rôles</h2>
-<p>Le service UserService propose un ensemble de
-fonctionnalités essentielles pour la gestion des utilisateurs et des rôles :
-  - La méthode addNewUser(User user) permet d'ajouter un nouvel utilisateur en spécifiant son nom
-d'utilisateur et son mot de passe. Un identifiant unique est généré automatiquement pour l'utilisateur.
-  - La méthode addNewRole(Role role) permet d'ajouter un nouveau rôle en précisant son nom.
-  - La méthode findUserByUserName(String userName) permet de rechercher un utilisateur par son nom d'utilisateur.
-  - La méthode findRoleByRoleName(String roleName) permet de rechercher un rôle par son nom.
-  - La méthode addRoleToUser(String userName, String roleName) permet d'attribuer un rôle à un utilisateur 
-en créant une relation Many-to-Many entre l'utilisateur et le rôle.
-  - La méthode autehticate(String userName, String password) permet d'authentifier un utilisateur en vérifiant
-ses informations d'identification, telles que le nom d'utilisateur et le mot de passe. Cette méthode garantit 
-une authentification sécurisée.</p>
+<p>Le service UserService propose un ensemble de fonctionnalités essentielles pour la gestion des utilisateurs et des rôles :</p>
+
+   
+ <h3>1. Ajout d'un Nouvel Utilisateur</h3>
+    <p>La méthode <code>addNewUser(User user)</code> permet d'ajouter un nouvel 
+utilisateur en spécifiant son nom d'utilisateur et son mot de passe. Un identifiant
+unique est généré automatiquement pour l'utilisateur.</p>
+ <img src="captures/user_db_h2.PNG" alt="user_db_h2">
+    
+<h3>2. Ajout d'un Nouveau Rôle</h3>
+    <p>La méthode <code>addNewRole(Role role)</code> permet d'ajouter un
+nouveau rôle en précisant son nom.</p>
+<img src="captures/role_db_h2.PNG" alt="role_db_h2">
+ <h3>3. Recherche d'un Utilisateur par Nom d'Utilisateur et afficher ses roles</h3>
+<img src="captures/chercher.PNG" alt="user avec ses roles">
+
+<h3>4. Attribution d'un Rôle à un Utilisateur</h3>
+    <p>La méthode <code>addRoleToUser(String userName, String roleName)</code> 
+permet d'attribuer un rôle à un utilisateur en établissant une relation Many-to-Many
+entre l'utilisateur et le rôle.</p>
+<img src="captures/role_user_h2_db.PNG" alt="role_user">
+
+    
+<h3>5. Authentification d'un Utilisateur</h3>
+    <p>La méthode <code>autehticate(String userName, String password)</code> permet 
+d'authentifier un utilisateur en vérifiant ses informations d'identification, 
+telles que le nom d'utilisateur et le mot de passe. Cette méthode garantit une
+authentification sécurisée.</p>
+<h4> Authentification réussie</h4>
+<img src="captures/authenticate.PNG" alt="Authentification réussie">
+<h4> Authentification en échec</h4>
+<img src="captures/authenticateinccorectpwd.PNG" alt="Authentification en échec">
 
 <h2>Exposition d'une API REST</h2>
 <p>Le contrôleur UserController expose une API REST pour 
 récupérer les détails d'un utilisateur en utilisant son nom d'utilisateur.
 Cette API est accessible via une requête HTTP GET sur l'URL "/users/{username}".</p>
 
+<h3>les détails d'un utilisateur avec le mot de passe</h3>
+<img src="captures/users_json_pwd.PNG" alt="users_json">
+<h3>les détails d'un utilisateur sans mot de passe</h3>
+<p>Pour exclure le mot de passe, on utilise la sérialisation JSON avec <code>@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)</code> , 
+afin de maintenir la sécurité et la confidentialité des informations sensibles.</p>
+<img src="captures/users_json.PNG" alt="users_json">
 <h2>Conclusion</h2>
 <p>Ce projet de gestion d'authentification est un exemple d'application Spring Boot
 utilisant JPA et Spring Data pour la persistance des données. Il fournit une solution robuste pour 

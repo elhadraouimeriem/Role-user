@@ -41,16 +41,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addRoleToUser(String userName, String roleName) {
-        User user=findUserByUserName(userName);
-        Role role=findRoleByRoleName(roleName);
-        if(user.getRoles()!=null){
-            //Bidirectinnelle
-            user.getRoles().add(role);
-             role.getUsers().add(user);
-        }
+        User user = findUserByUserName(userName);
+        Role role = findRoleByRoleName(roleName);
 
-        //userRepository.save(user);
+        if (user != null && user.getRoles() != null) {
+            user.getRoles().add(role);
+            role.getUsers().add(user);
+        } else {
+            // Gérez le cas où l'utilisateur ou sa liste de rôles est nulle
+        }
     }
+
 
     @Override
     public User autehticate(String userName, String password) {
