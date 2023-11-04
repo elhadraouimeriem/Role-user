@@ -1,11 +1,8 @@
 <h1 style="text-align: center;">Rapport de Projet Gestion d'Authentification</h1>
 
 <h2>Introduction</h2>
-<p >Ce rapport présente en détail le projet de gestion d'authentification,
-qui a été développé en utilisant Spring Boot, JPA (Java Persistence API), 
-et Spring Data. L'objectif principal de ce projet est de mettre en place un système
-de gestion des utilisateurs et des rôles,
-ainsi que de fournir une solution d'authentification sécurisée.</p>
+<p>Le présent rapport met en lumière le projet de gestion d'authentification, un système fondamental pour sécuriser l'accès aux ressources et services. Le projet repose sur la conception de deux entités principales, à savoir "User" (utilisateur) et "Role" (rôle). Ces deux entités sont interconnectées par une relation Many-to-Many, ce qui permet à un utilisateur d'être associé à plusieurs rôles, et inversement. La gestion de ces relations est facilitée par 
+l'utilisation de la technologie Java Persistence API (JPA) et de Spring Data. </p>
 
 <h2>Conception du Projet</h2>
 <p >La conception du projet repose sur deux entités principales :
@@ -121,8 +118,8 @@ Cette API est accessible via une requête HTTP GET sur l'URL "/users/{username}"
 afin de maintenir la sécurité et la confidentialité des informations sensibles.</p>
 <img src="captures/users_json.PNG" alt="users_json">
 <h2>Conclusion</h2>
-<p>Ce projet de gestion d'authentification est un exemple d'application Spring Boot
-utilisant JPA et Spring Data pour la persistance des données. Il fournit une solution robuste pour 
-la gestion des utilisateurs et des rôles, ainsi qu'une authentification sécurisée. 
-</p>
+<p>Ce projet de gestion d'authentification illustre l'importance cruciale 
+de la conception d'un système d'authentification robuste et sécurisé. Il s'appuie
+sur des concepts clés tels que les relations Many-to-Many, les annotations JPA, et l'injection de dépendances. En exposant une API REST, il permet d'accéder aux détails 
+des utilisateurs tout en préservant la confidentialité des informations sensibles.</p>
 
